@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minesweeper</title>
+  <link rel="shortcut icon" href="./images/bomb.png" type="image/x-icon">
+  <link rel="stylesheet" href="bomb-style.css">
+  <!-- animate.css -->
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css'
+    integrity='sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=='
+    crossorigin='anonymous' />
+  <!-- font awesome -->
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'
+    integrity='sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=='
+    crossorigin='anonymous' />
+</head>
+
+<body ondragstart='return false' oncontextmenu='self.event.returnValue=false'>
+  <!-- ondragstart:防拖曳生成新頁面 oncontextmenu:關閉右鍵目錄-->
+
+  <!-- HTML -->
+  <div id="game">
+    <div id="record">
+      <div id="left">
+        <div id="info">
+          <i class="fa-solid fa-question"></i>
+        </div>
+        <div id="restart">
+          <i class="fa-solid fa-rotate-right"></i>
+        </div>
+      </div>
+      <div id="score">
+        Best record of <span id="level">Easy</span> level：<span id="sec">?</span> s
+      </div>
+    </div>
+
+    <div id="top">
+      <div id="bomb">
+        <img src="./images/num-0.png">
+        <img src="./images/num-0.png">
+        <img src="./images/num-0.png">
+      </div>
+      <div class="custom-select">
+        <select name="level" id="select">
+          <option value="0">Easy</option>
+          <option value="1">Normal</option>
+          <option value="2">Difficult</option>
+        </select>
+      </div>
+      <div id="timer">
+        <img src="./images/num-0.png">
+        <img src="./images/num-0.png">
+        <img src="./images/num-0.png">
+      </div>
+    </div>
+    <div class="line"></div>
+    <div id="grid"></div>
+  </div>
+
+  <!-- jQuery -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'
+    integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=='
+    crossorigin='anonymous'></script>
+
+  <!-- sweetalert2 -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.10.1/sweetalert2.all.min.js'
+    integrity='sha512-1SVc8wK7Y/XRAKRKfP09ILQmzJGwqq6m66x6mWa7r36j+/fa+3kz46s8kvELsGc52yo1as48nneFic7BZKMu8Q=='
+    crossorigin='anonymous'></script>
+
+  <!-- myScript -->
+  <script src="./bomb-script.js"></script>
+</body>
+
+</html>
