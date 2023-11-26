@@ -226,18 +226,20 @@ function lose() {
 
 // 勝利條件
 function victory() {
-    let findBomb = true
-    // 旗子 + 未打開的.box = 炸彈總數
+    let flagIsBomb = true
+    let boxIsBomb = true
+    // 1.全部炸彈都被標示，且皆正確
+    // 2.炸彈沒標示完，但剩餘皆為炸彈
     if (($('.flag').length === bombsTotal) || ($('.flag').length + $('.box').length === bombsTotal)) {
         // 如果旗子都有插對
         $('.flag').each(function () {
             if (!bombsArray.includes($(this).data("index"))) {
-                // 如果旗子的位置不是炸彈，設定 findBomb 為 false 並中斷循環
-                findBomb = false
-                return false
+                // 如果旗子的位置不是炸彈，設定 flagIsBomb 為 false 並中斷循環
+                return flagIsBomb = false
             }
         })
-        if (findBomb) {
+
+        if (flagIsBomb && boxIsBomb) {
             clearInterval(time)
 
             // 辨識最快完成速度
@@ -249,7 +251,6 @@ function victory() {
             // 更新 localStorage 的資料
             scoreString = JSON.stringify(score)
             localStorage.setItem('scoreItem', scoreString)
-
             // 更新遊戲介面最快紀錄
             $('#level').text(level)
             $('#sec').text(sec)
@@ -290,13 +291,11 @@ function clickEvent() {
     $('.box').on('mousedown', function (e) {
         // 滑鼠左鍵
         if (e.button === 0) {
-            // 第?列
-            const row = Math.floor($(this).data("index") / colTotal)
-            // 第?欄
-            const col = $(this).data("index") % colTotal
-
+            let dataIndex = $(this).data("index")
+            const row = Math.floor(dataIndex / colTotal) // 第?列            
+            const col = dataIndex % colTotal             // 第?欄
             // 如果是炸彈
-            if (bombsArray.includes($(this).data("index"))) {
+            if (bombsArray.includes(dataIndex)) {
                 lose()
             }
             // 如果不是炸彈
