@@ -1,7 +1,7 @@
 // 定義全局變數或常數
 const rowLevel = [10, 14, 18]
 const colLevel = [10, 16, 22]
-const bombLevel = [10, 30, 50]
+const bombLevel = [10, 45, 80]
 let rowTotal = 10     // 列數
 let colTotal = 10     // 欄數
 let bombsTotal = 10   // 炸彈總數
