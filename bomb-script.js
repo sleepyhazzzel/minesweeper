@@ -1,7 +1,7 @@
 // 定義全局變數或常數
 const rowLevel = [10, 14, 18]
 const colLevel = [10, 16, 22]
-const bombLevel = [10, 45, 80]
+const bombLevel = [10, 30, 70]
 let rowTotal = 10     // 列數
 let colTotal = 10     // 欄數
 let bombsTotal = 10   // 炸彈總數
@@ -235,13 +235,23 @@ function victory() {
         $('.flag').each(function () {
             if (!bombsArray.includes($(this).data("index"))) {
                 // 如果旗子的位置不是炸彈，設定 flagIsBomb 為 false 並中斷循環
-                return flagIsBomb = false
+                flagIsBomb = false
+                return false
             }
         })
 
-        if (flagIsBomb && boxIsBomb) {
-            clearInterval(time)
+        $('.box').each(function () {
+            if (!bombsArray.includes($(this).data("index"))) {
+                boxIsBomb = false
+                return false
+            }
+        })
 
+
+        if (flagIsBomb && boxIsBomb) {
+            console.log(flagIsBomb, boxIsBomb)
+            clearInterval(time)
+            console.log(flagIsBomb, boxIsBomb)
             // 辨識最快完成速度
             let level = $('#select option:selected').text()
             if (sec < score[level]) {
