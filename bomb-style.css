@@ -28,6 +28,29 @@ body {
     align-items: center;
 }
 
+#left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#info,
+#restart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    border: 3.25px outset #ddd;
+    background-color: #ccc;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#info {
+    font-size: 16px;
+}
+
 #level,
 #sec {
     padding: 3px 5px;
@@ -50,6 +73,23 @@ body {
     justify-content: space-between;
     align-items: stretch;
     padding: 0.5em;
+}
+
+#bomb,
+#timer {
+    width: 65px;
+    max-height: 34px;
+    background-color: #000;
+    padding: 0 0.25em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bomb img,
+#timer img {
+    height: 100%;
+    margin: 0 0.5px;
 }
 
 .custom-select {
@@ -95,50 +135,10 @@ select {
     outline: none;
 }
 
-#bomb,
-#timer {
-    width: 65px;
-    max-height: 34px;
-    background-color: #000;
-    padding: 0 0.25em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#bomb img,
-#timer img {
-    height: 100%;
-    margin: 0 0.5px;
-}
-
 .line {
     width: 100%;
     height: 10px;
     background-color: #ccc;
-}
-
-#left {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#restart,
-#info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 25px;
-    height: 25px;
-    border: 3.25px outset #ddd;
-    background-color: #ccc;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-#info {
-    font-size: 16px;
 }
 
 .box,
@@ -174,6 +174,8 @@ select {
     background: #ccc url(./images/not-bomb.png) center/cover no-repeat;
 }
 
+/* SweetAlert */
+/* 修正 safari 字型跑板問題 */
 .swal2-popup {
     font-family: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

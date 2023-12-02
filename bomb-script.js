@@ -228,30 +228,26 @@ function lose() {
 function victory() {
     let flagIsBomb = true
     let boxIsBomb = true
-    // 1.全部炸彈都被標示，且皆正確
-    // 2.炸彈沒標示完，但剩餘皆為炸彈
-    if (($('.flag').length === bombsTotal) || ($('.flag').length + $('.box').length === bombsTotal)) {
+    // 1.全部炸彈都被標示，且皆正確(可能會有剩餘未打開的方格)
+    // 2.炸彈沒標示完，但剩餘 .box 皆為炸彈
+    if ($('.flag').length === bombsTotal ||
+        $('.box').each(function () {
+            if (!bombsArray.includes($(this).data("index"))) {
+                boxIsBomb = false
+                return
+            }
+        })) {
         // 如果旗子都有插對
         $('.flag').each(function () {
             if (!bombsArray.includes($(this).data("index"))) {
                 // 如果旗子的位置不是炸彈，設定 flagIsBomb 為 false 並中斷循環
                 flagIsBomb = false
-                return false
+                return
             }
         })
-
-        $('.box').each(function () {
-            if (!bombsArray.includes($(this).data("index"))) {
-                boxIsBomb = false
-                return false
-            }
-        })
-
 
         if (flagIsBomb && boxIsBomb) {
-            console.log(flagIsBomb, boxIsBomb)
             clearInterval(time)
-            console.log(flagIsBomb, boxIsBomb)
             // 辨識最快完成速度
             let level = $('#select option:selected').text()
             if (sec < score[level]) {
